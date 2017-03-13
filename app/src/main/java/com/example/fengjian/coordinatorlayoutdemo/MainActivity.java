@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,24 @@ public class MainActivity extends AppCompatActivity {
     private List<View> mViewData;
     private int viewCounts = 3;
     private int itemCounts = 20;
+    private String mCommonTitle = "话题";
+    private String mTopicTitle = "甜菜Baby小组标题";
+    private String mSubmary = "星空灿烂无比美丽，激情主播最爱顶顶！\n" +
+            "亲们，\n" +
+            "动起你的小小手\n" +
+            "拉上你的好朋友一起来支持我们可爱帅气的主播\n" +
+            "–顶顶\n" +
+            "-- \n" +
+            "直播间期待您的光临\n" +
+            "场控轻易不动手\n" +
+            "动手就是送人走。。。\n" +
+            "不要擦边\n" +
+            "请配合我们的工作\n" +
+            "谢谢\n" +
+            "谢谢大家对视频场控工作的支持\n" +
+            "祝大家在直播间和\n" +
+            "3867\n" +
+            "玩的开心！\n";
     private String[] tabArr = new String[]{
             "tab 1", "tab 2", "tab 3"
     };
@@ -40,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
         HomeViewPagerAdapter adapter = getPagerAdapter();
         mPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mPager);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.home_tool_bar);
+        toolbar.setTitle("Title");
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
     }
 
     private List<View> structureTextViewData() {

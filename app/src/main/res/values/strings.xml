@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CoordinatorLayoutDemo</string>
+    <string name="home_view_pager_behavior">com.example.fengjian.coordinatorlayoutdemo.HomeViewPagerBehavior</string>
 </resources>
