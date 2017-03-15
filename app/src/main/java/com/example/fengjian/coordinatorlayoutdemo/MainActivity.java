@@ -2,6 +2,8 @@ package com.example.fengjian.coordinatorlayoutdemo;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -10,6 +12,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -24,24 +28,20 @@ public class MainActivity extends AppCompatActivity {
     private List<View> mViewData;
     private int viewCounts = 3;
     private int itemCounts = 20;
+    private TextView mGroupSubmaryView;
+    private FloatingActionButton meFabEditView;
     private String mCommonTitle = "话题";
     private String mTopicTitle = "甜菜Baby小组标题";
-    private String mSubmary = "星空灿烂无比美丽，激情主播最爱顶顶！\n" +
-            "亲们，\n" +
-            "动起你的小小手\n" +
-            "拉上你的好朋友一起来支持我们可爱帅气的主播\n" +
-            "–顶顶\n" +
-            "-- \n" +
-            "直播间期待您的光临\n" +
-            "场控轻易不动手\n" +
-            "动手就是送人走。。。\n" +
-            "不要擦边\n" +
-            "请配合我们的工作\n" +
-            "谢谢\n" +
-            "谢谢大家对视频场控工作的支持\n" +
-            "祝大家在直播间和\n" +
-            "3867\n" +
-            "玩的开心！\n";
+    private float mTopViewShowRatio = 0.3f;
+    private String mSubmary = "星空灿烂无比美丽，激情主播最爱顶顶！亲们，动起你的小小手拉上你的好朋友一起来支持我们可爱帅气的主播–" +
+            "顶顶直播间期待您的光临" +
+            "场控轻易不动手动手就是送人走。。。不要擦边" +
+            "请配合我们的工作星空灿烂无比美丽，激情主播最爱顶顶！亲们，动起你的小小手拉上你的好朋友一起来支持我们可爱帅气的主播–" +
+            "谢谢星空灿烂无比美丽，激情主播最爱顶顶！亲们，动起你的小小手拉上你的好朋友一起来支持我们可爱帅气的主播–" +
+            "谢谢大家对视频场控工作的支持" +
+            "祝大家在直播间和" +
+            "3867" +
+            "玩的开心！";
     private String[] tabArr = new String[]{
             "tab 1", "tab 2", "tab 3"
     };
@@ -55,15 +55,42 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         mTabLayout = (TabLayout) findViewById(R.id.tl_home_tab);
+        mGroupSubmaryView = (TextView) findViewById(R.id.tv_gropu_submary);
+        mGroupSubmaryView.setText(mSubmary);
+        meFabEditView = (FloatingActionButton) findViewById(R.id.fab_home_edit);
+        meFabEditView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditActivity.startActivity(MainActivity.this);
+            }
+        });
         mPager = (ViewPager) findViewById(R.id.vp_home);
         HomeViewPagerAdapter adapter = getPagerAdapter();
         mPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mPager);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.home_tool_bar);
-        toolbar.setTitle("Title");
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.home_tool_bar);
+        toolbar.setTitle(mCommonTitle);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.ic_launcher);
+
+        HomeViewPagerBehavior from = HomeViewPagerBehavior.from(mPager);
+        if (from != null) {
+            from.setOnDependViewChangedListener(new HomeViewPagerBehavior.DependViewChangedListener() {
+                @Override
+                public void onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
+                    if (dependency != null) {
+                        float ratio = Math.abs((float) dependency.getY() / dependency.getHeight());
+                        if (ratio > mTopViewShowRatio) {
+                            toolbar.setTitle(mSubmary);
+                        }else {
+                            toolbar.setTitle(mCommonTitle);
+                        }
+                    }
+                }
+            });
+        }
     }
+
 
     private List<View> structureTextViewData() {
         List<View> views = new ArrayList<View>();
@@ -173,5 +200,20 @@ public class MainActivity extends AppCompatActivity {
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

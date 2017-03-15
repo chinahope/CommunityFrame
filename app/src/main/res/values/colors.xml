@@ -6,4 +6,5 @@
     <color name="textColorPrimary">#ffffff</color>
     <color name="colorControlNormal">#aaaaaa</color>
     <color name="colorWindowBackground">#ffffff</color>
+    <color name="colorSubmary">#ffff00</color>
 </resources>

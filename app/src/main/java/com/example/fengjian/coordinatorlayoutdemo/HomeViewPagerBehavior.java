@@ -6,6 +6,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Created by fengjian on 2017/3/13.
@@ -13,12 +14,9 @@ import android.view.View;
 
 public class HomeViewPagerBehavior extends AppBarLayout.ScrollingViewBehavior {
     private static final String TAG = "fjdada";
+    private DependViewChangedListener mDependViewChangedListener;
 
-    HomeViewPagerBehavior(){
-        super();
-    }
-
-    HomeViewPagerBehavior(Context context, AttributeSet attrs){
+    public HomeViewPagerBehavior(Context context, AttributeSet attrs){
         super(context, attrs);
     }
 
@@ -30,7 +28,10 @@ public class HomeViewPagerBehavior extends AppBarLayout.ScrollingViewBehavior {
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
-        Log.d(TAG, "onDependentViewChanged");
+        Log.d(TAG, "onDependentViewChanged" + "depHeight = " +dependency.getHeight() + " , depWidth = " + dependency.getWidth()  + " , depX = " + dependency.getX() + " , depY = " + dependency.getY());
+        if(mDependViewChangedListener != null){
+            mDependViewChangedListener.onDependentViewChanged(parent, child, dependency);
+        }
         return super.onDependentViewChanged(parent, child, dependency);
     }
 
@@ -48,17 +49,23 @@ public class HomeViewPagerBehavior extends AppBarLayout.ScrollingViewBehavior {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
     }
 
-    @Override
-    public boolean onNestedFling(CoordinatorLayout coordinatorLayout, View child, View target, float velocityX, float velocityY, boolean consumed) {
-        Log.d(TAG, "onNestedFling");
-        return super.onNestedFling(coordinatorLayout, child, target, velocityX, velocityY, consumed);
+    public interface DependViewChangedListener{
+        void onDependentViewChanged(CoordinatorLayout parent, View child, View dependency);
     }
 
-    @Override
-    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target) {
-        Log.d(TAG, "onStopNestedScroll");
-        super.onStopNestedScroll(coordinatorLayout, child, target);
+    public void setOnDependViewChangedListener(DependViewChangedListener listener){
+        this.mDependViewChangedListener = listener;
     }
 
-
+    public static HomeViewPagerBehavior from(View view){
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        if(layoutParams instanceof CoordinatorLayout.LayoutParams){
+            CoordinatorLayout.LayoutParams params = ((CoordinatorLayout.LayoutParams) layoutParams);
+            CoordinatorLayout.Behavior behavior = params.getBehavior();
+            if(behavior != null && behavior instanceof HomeViewPagerBehavior){
+                return ((HomeViewPagerBehavior) behavior);
+            }
+        }
+        return null;
+    }
 }
