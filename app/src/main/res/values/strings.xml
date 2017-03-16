@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CoordinatorLayoutDemo</string>
     <string name="home_view_pager_behavior">com.example.fengjian.coordinatorlayoutdemo.HomeViewPagerBehavior</string>
+    <string name="home_float_action_button_behavior">com.example.fengjian.coordinatorlayoutdemo.BottomScaleBehavior</string>
     <string name="action_settings">setting</string>
 
     <string name="bye_burger_float_behavior">com.example.belibrary.ByeBurgerFloatButtonBehavior</string>

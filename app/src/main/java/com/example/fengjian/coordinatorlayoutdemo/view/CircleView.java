@@ -2,8 +2,12 @@ package com.example.fengjian.coordinatorlayoutdemo.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -17,8 +21,9 @@ import com.example.fengjian.coordinatorlayoutdemo.util.DimenUtil;
 
 public class CircleView extends ImageView {
     private float mRadius;
-    private Paint mPaint;
-
+    private Paint mBitmapPaint;
+    private Bitmap mBitmap;
+    private Bitmap[] mBitmaps;
     public CircleView(Context context) {
         this(context, null);
     }
@@ -44,8 +49,27 @@ public class CircleView extends ImageView {
     }
 
     private void init() {
-        mPaint = new Paint();
-        mPaint.setAntiAlias(true);
+        mBitmapPaint = new Paint();
+        mBitmap = inflateBitmapFromDrawable(getDrawable());
+        BitmapShader shader = new BitmapShader(mBitmap, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
+        mBitmapPaint.setShader(shader);
+        mBitmapPaint.setAntiAlias(true);
+    }
+
+    @Override
+    public void setImageResource(int resId) {
+        super.setImageResource(resId);
+
+    }
+
+    private Bitmap inflateBitmapFromDrawable(Drawable drawable) {
+        if (drawable == null) {
+            return null;
+        }
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        }
+        return null;
     }
 
     @Override
@@ -55,6 +79,6 @@ public class CircleView extends ImageView {
             return;
         }
         drawable.draw(canvas);
-        canvas.drawCircle(mRadius, mRadius, mRadius, mPaint);
+        canvas.drawCircle(mRadius, mRadius, mRadius, mBitmapPaint);
     }
 }
