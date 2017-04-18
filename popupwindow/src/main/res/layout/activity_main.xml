@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/gift_pack_select_arrow"
+        android:button="@null" />
+</RelativeLayout>

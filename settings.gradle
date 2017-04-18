@@ -1,1 +1,1 @@
-include ':app', ':behaviorLibiary'
+include ':app', ':behaviorLibiary', ':circleview', ':popupwindow', ':recyclerviewdivider'
