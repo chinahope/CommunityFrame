@@ -8,9 +8,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/activityrecreate" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/behaviorLibiary" />
             <option value="$PROJECT_DIR$/circleview" />
+            <option value="$PROJECT_DIR$/imagespan" />
             <option value="$PROJECT_DIR$/popupwindow" />
             <option value="$PROJECT_DIR$/recyclerviewdivider" />
           </set>

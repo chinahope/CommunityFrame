@@ -1,17 +1,22 @@
 package com.example.ggs.recyclerviewdivider;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -50,7 +55,34 @@ public class MainActivity extends AppCompatActivity {
         HorzItemDecoration decor = new HorzItemDecoration(this, R.drawable.divider, 40, LinearLayoutManager.HORIZONTAL);
         recyclerView.addItemDecoration(decor);
         recyclerView.setAdapter(adapter);
+
+        /***********************************************/
+
+        final EditText edit = (EditText) findViewById(R.id.edit);
+        edit.setTextColor(getResources().getColor(R.color.colorPrimary));
+        edit.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
+        edit.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                return false;
+            }
+        });
+        edit.requestFocus();
+        Button send = (Button) findViewById(R.id.send);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isFlag){
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                }else {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                }
+                isFlag = !isFlag;
+            }
+        });
     }
+
+    private boolean isFlag;
 
     public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
 
