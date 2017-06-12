@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/imagespan" />
             <option value="$PROJECT_DIR$/popupwindow" />
             <option value="$PROJECT_DIR$/recyclerviewdivider" />
+            <option value="$PROJECT_DIR$/reddot" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

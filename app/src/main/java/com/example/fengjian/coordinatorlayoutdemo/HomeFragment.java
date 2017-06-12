@@ -16,46 +16,49 @@ import android.widget.TextView;
  */
 
 public class HomeFragment extends Fragment {
-  @Nullable
-  @Override
-  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
-    View v = View.inflate(getContext(), R.layout.fragment_home, null);
-    RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
-    recyclerView.setAdapter(new Adapter());
-    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    return v;
-  }
-
-  public static HomeFragment newInstance() {
-    Bundle args = new Bundle();
-    HomeFragment fragment = new HomeFragment();
-    fragment.setArguments(args);
-    return fragment;
-  }
-
-  class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-
-    @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-      return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_main, null));
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View v = View.inflate(getContext(), R.layout.fragment_home, null);
+        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(new Adapter());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        return v;
     }
 
-    @Override public void onBindViewHolder(ViewHolder holder, int position) {
-
+    public static HomeFragment newInstance() {
+        Bundle args = new Bundle();
+        HomeFragment fragment = new HomeFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
-    @Override public int getItemCount() {
-      return 20;
-    }
+    class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-      TextView textView;
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ViewHolder(View.inflate(parent.getContext(), R.layout.item_main, null));
+        }
 
-      public ViewHolder(View itemView) {
-        super(itemView);
-        textView = (TextView) itemView.findViewById(R.id.text);
-        textView.setTextColor(Color.BLACK);
-      }
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 20;
+        }
+
+        class ViewHolder extends RecyclerView.ViewHolder {
+            TextView textView;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+                textView = (TextView) itemView.findViewById(R.id.text);
+                textView.setTextColor(Color.BLACK);
+            }
+        }
     }
-  }
 }
