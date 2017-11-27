@@ -14,13 +14,36 @@ android {
 
     }
     buildTypes {
-        release {
+        debug{
+            println "fjdada buildTypes debug"
             minifyEnabled false
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            println "fjdada buildTypes release"
         }
     }
 }
 
+println "fjdada gradle behavior libiary"
+
+task task1 {
+    doFirst{
+        println "fjdada task1 doFirst"
+    }
+
+    doLast{
+        println "fjdada task1 doLast"
+    }
+}
+tasks.whenTaskAdded {
+    task ->
+    if(task.name.equals("preDebugBuild")){
+        task.dependsOn task1
+        println "fjdada find depends task assembleDebug"
+    }
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

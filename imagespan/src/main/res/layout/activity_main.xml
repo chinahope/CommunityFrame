@@ -21,5 +21,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hello"
+        android:textColor="#ff00ff"
+        android:textIsSelectable="true"
         android:text="simple image span string" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/imageSpan"
+        android:text="this is textview"
+        android:textColor="#ffaaff"
+        android:textIsSelectable="true"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
