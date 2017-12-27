@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/LocatePermission" />
             <option value="$PROJECT_DIR$/ViewCacheBitmap" />
             <option value="$PROJECT_DIR$/activityrecreate" />
             <option value="$PROJECT_DIR$/app" />
@@ -16,7 +17,6 @@
             <option value="$PROJECT_DIR$/gpsproxy" />
             <option value="$PROJECT_DIR$/gpsview" />
             <option value="$PROJECT_DIR$/imagespan" />
-            <option value="$PROJECT_DIR$/myapplication" />
             <option value="$PROJECT_DIR$/popupwindow" />
             <option value="$PROJECT_DIR$/recyclerviewdivider" />
             <option value="$PROJECT_DIR$/reddot" />

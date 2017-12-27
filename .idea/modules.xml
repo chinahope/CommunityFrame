@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CommunityFrame.iml" filepath="$PROJECT_DIR$/CommunityFrame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LocatePermission/LocatePermission.iml" filepath="$PROJECT_DIR$/LocatePermission/LocatePermission.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewCacheBitmap/ViewCacheBitmap.iml" filepath="$PROJECT_DIR$/ViewCacheBitmap/ViewCacheBitmap.iml" />
       <module fileurl="file://$PROJECT_DIR$/activityrecreate/activityrecreate.iml" filepath="$PROJECT_DIR$/activityrecreate/activityrecreate.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
@@ -11,7 +12,6 @@
       <module fileurl="file://$PROJECT_DIR$/gpsproxy/gpsproxy.iml" filepath="$PROJECT_DIR$/gpsproxy/gpsproxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/gpsview/gpsview.iml" filepath="$PROJECT_DIR$/gpsview/gpsview.iml" />
       <module fileurl="file://$PROJECT_DIR$/imagespan/imagespan.iml" filepath="$PROJECT_DIR$/imagespan/imagespan.iml" />
-      <module fileurl="file://$PROJECT_DIR$/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/myapplication/myapplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/popupwindow/popupwindow.iml" filepath="$PROJECT_DIR$/popupwindow/popupwindow.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerviewdivider/recyclerviewdivider.iml" filepath="$PROJECT_DIR$/recyclerviewdivider/recyclerviewdivider.iml" />
       <module fileurl="file://$PROJECT_DIR$/reddot/reddot.iml" filepath="$PROJECT_DIR$/reddot/reddot.iml" />

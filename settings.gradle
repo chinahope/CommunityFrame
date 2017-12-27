@@ -1,1 +1,1 @@
-include ':app', ':behaviorLibiary', ':circleview', ':popupwindow', ':recyclerviewdivider', ':imagespan', ':activityrecreate', ':reddot', ':gpsproxy', ':gpsview', ':stickyheadersrecyclerview', ':stickyViewSample', ':ViewCacheBitmap', ':myapplication'
+include ':app', ':behaviorLibiary', ':circleview', ':popupwindow', ':recyclerviewdivider', ':imagespan', ':activityrecreate', ':reddot', ':gpsproxy', ':gpsview', ':stickyheadersrecyclerview', ':stickyViewSample', ':ViewCacheBitmap', ':LocatePermission'
